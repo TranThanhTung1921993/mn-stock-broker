@@ -1,0 +1,33 @@
+micronaut:
+  application:
+    name: mnStockBroker
+  server:
+    port: 8081
+  security:
+    authentication: bearer
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: changeThisSecretToALongerSecureString
+hello:
+  controller:
+    part: "/hello"
+  service:
+    greeting: "Hello from service"
+  config:
+    greeting:
+      de: "Hallo"
+      en: "Hello"
+# JSON Settings
+jackson:
+  serialization-inclusion: always
+  property-naming-strategy: SNAKE_CASE
+  serialization:
+    writeDatesAsTimestamps: false
+    writeDatesWithZoneId: true
+    writeDateTimestampsAsNanoseconds: false
+  generator:
+    writeNumbersAsStrings: true
+    writeBigDecimalAsPlain: true
