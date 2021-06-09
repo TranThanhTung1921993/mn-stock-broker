@@ -8,4 +8,4 @@ import javax.validation.constraints.NotBlank
 data class GreetingConfig @ConfigurationInject constructor(
     @NotBlank val en: String,
     @NotBlank val de: String
-) {}
+)
