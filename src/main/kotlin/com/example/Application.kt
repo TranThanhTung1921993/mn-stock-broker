@@ -1,16 +1,11 @@
 package com.example
 
-import io.micronaut.context.ApplicationContext
-import io.micronaut.context.env.Environment
-import io.micronaut.runtime.Micronaut.*
+import io.micronaut.runtime.Micronaut.build
 
 fun main(args: Array<String>) {
     build()
         .args(*args)
-        .propertySources(HelloDevConfig.default(), HelloProdConfig.default())
-//        .environments(Environment.TEST)
-//        .environments("prod")
-//        .deduceEnvironment(false)
+        .propertySources(HelloDevConfig.default())
         .banner(false)
         .packages("com.example")
         .start()

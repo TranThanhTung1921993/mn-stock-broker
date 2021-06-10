@@ -1,5 +1,6 @@
 package com.example
 
+import io.micronaut.context.annotation.Property
 import io.micronaut.context.annotation.Value
 import io.micronaut.http.MediaType
 import io.micronaut.http.annotation.Controller
@@ -18,11 +19,12 @@ class HelloController {
     @Inject
     lateinit var service: HelloService
 
-    @Value("\${hello.language.vietnamese}")
+    @Value("\${hello.language.vietnamese:hello}")
     lateinit var helloInVietnamese: String
 
-    @Value("\${hello.language.chinese}")
-    lateinit var helloInChinese: String
+    @set:Inject
+    @setparam:Property(name = "hello.language.chinese")
+    var helloInChinese: String? = null
 
     @Get(value = "/", consumes = [MediaType.TEXT_PLAIN])
     fun hello(): String {
@@ -35,7 +37,7 @@ class HelloController {
     }
 
     @Get(value = "/cn", consumes = [MediaType.TEXT_PLAIN])
-    fun helloInChinese(): String {
+    fun helloInChinese(): String? {
         return helloInChinese
     }
 
