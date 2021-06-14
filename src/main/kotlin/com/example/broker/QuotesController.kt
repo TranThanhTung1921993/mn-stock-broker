@@ -23,7 +23,7 @@ class QuotesController {
     @Get("/{symbol}")
     fun getQuote(@PathVariable symbol: String): HttpResponse<Any> {
         val quote: Optional<Quote> = store.fetchQuote(symbol)
-        if (quote.isEmpty) {
+        if (quote.isEmpty()) {
             val notFoundError = CustomError(
                 status = HttpStatus.NOT_FOUND.code,
                 error = HttpStatus.NOT_FOUND.name,
